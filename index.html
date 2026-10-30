@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="description" content="Leo's personal developer portfolio.">
+<title>LEO.DEV — Personal Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --white: #FFFFFF;
+    --gray: #3B3B3B;
+    --green: #009063;
+    --lavender: #E3E0F3;
+    --muted: #777777;
+    --light: #F7F6FA;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--gray);
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1100px, 88%);
+    margin: auto;
+}
+
+/* NAVIGATION */
+
+nav {
+    height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #eeeeee;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.logo span {
+    color: var(--green);
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: 13px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--green);
+}
+
+.nav-button {
+    background: var(--green);
+    color: white;
+    padding: 12px 19px;
+    border-radius: 8px;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 680px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+}
+
+.eyebrow {
+    color: var(--green);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(52px, 8vw, 90px);
+    line-height: 1.04;
+    letter-spacing: -5px;
+    font-weight: 800;
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero-description {
+    max-width: 540px;
+    margin-top: 25px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 23px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.button-primary {
+    background: var(--green);
+    color: white;
+}
+
+.button-secondary {
+    border: 1px solid #dddddd;
+}
+
+.button:hover {
+    transform: translateY(-4px);
+}
+
+.hero-decoration {
+    position: absolute;
+    right: -100px;
+    top: 130px;
+    width: 390px;
+    height: 390px;
+    border-radius: 50%;
+    background: var(--lavender);
+    opacity: .8;
+}
+
+.hero-decoration::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: var(--green);
+    opacity: .15;
+    border-radius: 50%;
+    left: -50px;
+    bottom: 0;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 100px 0;
+}
+
+.section-label {
+    color: var(--green);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.section-title {
+    font-size: clamp(32px, 5vw, 48px);
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 600px;
+}
+
+/* ABOUT */
+
+.about {
+    background: var(--light);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 65px;
+    align-items: center;
+}
+
+.about-card {
+    background: var(--lavender);
+    border-radius: 20px;
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.initial {
+    font-size: 120px;
+    font-weight: 800;
+    color: var(--green);
+}
+
+.about-text p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-top: 15px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 25px;
+}
+
+.tag {
+    background: white;
+    padding: 9px 13px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* SKILLS */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 45px;
+}
+
+.skill-card {
+    border: 1px solid #eeeeee;
+    padding: 27px 20px;
+    border-radius: 13px;
+    transition: .3s;
+}
+
+.skill-card:hover {
+    background: var(--lavender);
+    transform: translateY(-5px);
+}
+
+.skill-number {
+    color: var(--green);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+}
+
+.skill-card h3 {
+    margin: 18px 0 10px;
+}
+
+.skill-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* PROJECTS */
+
+.projects {
+    background: var(--light);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 45px;
+}
+
+.project-card {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid #eeeeee;
+    transition: .3s;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--green);
+}
+
+.project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.project-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--lavender);
+    color: var(--green);
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.status {
+    color: var(--green);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+}
+
+.project-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.project-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 22px 0;
+}
+
+.tech span {
+    background: var(--light);
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+}
+
+/* CONTACT */
+
+.contact-box {
+    background: var(--gray);
+    color: white;
+    padding: 65px 35px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.contact-box h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    letter-spacing: -2px;
+}
+
+.contact-box p {
+    color: #cccccc;
+    margin: 20px auto 30px;
+    max-width: 500px;
+    line-height: 1.8;
+}
+
+.contact-box .button {
+    background: var(--green);
+    color: white;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px 0;
+    border-top: 1px solid #eeeeee;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-logo {
+    font-weight: 800;
+    font-size: 19px;
+}
+
+footer p {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* ANIMATIONS */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width: 750px) {
+    nav {
+        height: 72px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .hero {
+        min-height: 600px;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    .hero-decoration {
+        width: 230px;
+        height: 230px;
+        right: -130px;
+        top: 300px;
+    }
+
+    section {
+        padding: 75px 0;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-box {
+        padding: 45px 20px;
+    }
+}
+
+@media(max-width: 420px) {
+    .nav-links {
+        gap: 8px;
+    }
+
+    .nav-links a {
+        font-size: 9px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav class="container">
+    <a href="#" class="logo">LEO<span>.</span>DEV</a>
+
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact" class="nav-button">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+
+<header class="hero container">
+    <div class="hero-content">
+
+        <div class="eyebrow">WELCOME TO MY PORTFOLIO</div>
+
+        <h1>
+            Building ideas.<br>
+            Creating <span>solutions.</span>
+        </h1>
+
+        <p class="hero-description">
+            Hello! I'm Leo. I'm passionate about technology,
+            programming and innovation. I enjoy exploring
+            new ideas and turning creativity into digital projects.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#projects" class="button button-primary">
+                Explore my work →
+            </a>
+
+            <a href="#about" class="button button-secondary">
+                More about me
+            </a>
+        </div>
+
+    </div>
+
+    <div class="hero-decoration"></div>
+</header>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+    <div class="container about-grid reveal">
+
+        <div class="about-card">
+            <img src="perfil.jpg" alt="Leo"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+            <div class="initial" style="display:none;">L.</div>
+        </div>
+
+        <div class="about-text">
+
+            <div class="section-label">01 / ABOUT ME</div>
+
+            <h2 class="section-title">A little about me.</h2>
+
+            <p>
+                I'm Leo, a technology enthusiast interested
+                in programming, software development and
+                the future of Artificial Intelligence.
+            </p>
+
+            <p>
+                I enjoy learning new technologies, experimenting
+                with ideas and developing projects that turn
+                concepts into real experiences.
+            </p>
+
+            <p>
+                My journey is just beginning, and I'm always
+                looking for new things to discover.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Technology</span>
+                <span class="tag">Programming</span>
+                <span class="tag">AI</span>
+                <span class="tag">Innovation</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+    <div class="container reveal">
+
+        <div class="section-label">02 / WHAT I EXPLORE</div>
+
+        <h2 class="section-title">Skills & interests.</h2>
+
+        <p class="section-description">
+            Technologies and areas I'm interested in
+            exploring and developing.
+        </p>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <div class="skill-number">01</div>
+                <h3>Python</h3>
+                <p>Programming, logic and data exploration.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-number">02</div>
+                <h3>HTML & CSS</h3>
+                <p>Modern websites and digital interfaces.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-number">03</div>
+                <h3>JavaScript</h3>
+                <p>Interactive web experiences.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-number">04</div>
+                <h3>Artificial Intelligence</h3>
+                <p>Exploring AI models and new technologies.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+
+<section class="projects" id="projects">
+    <div class="container reveal">
+
+        <div class="section-label">03 / SELECTED WORK</div>
+
+        <h2 class="section-title">Things I've created.</h2>
+
+        <p class="section-description">
+            A collection of projects, experiments and ideas.
+        </p>
+
+        <div class="project-grid">
+
+            <article class="project-card">
+                <div class="project-top">
+                    <div class="project-icon">01</div>
+                    <div class="status">PROJECT</div>
+                </div>
+
+                <h3>Project One</h3>
+
+                <p>
+                    A personal project focused on building
+                    creative digital experiences and exploring
+                    new possibilities.
+                </p>
+
+                <div class="tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+
+                <a href="#" class="button button-secondary">
+                    Coming soon
+                </a>
+            </article>
+
+            <article class="project-card">
+                <div class="project-top">
+                    <div class="project-icon">02</div>
+                    <div class="status">PROJECT</div>
+                </div>
+
+                <h3>Project Two</h3>
+
+                <p>
+                    An experimental project exploring
+                    technology, innovation and software development.
+                </p>
+
+                <div class="tech">
+                    <span>Python</span>
+                    <span>Development</span>
+                </div>
+
+                <a href="#" class="button button-secondary">
+                    Coming soon
+                </a>
+            </article>
+
+            <article class="project-card">
+                <div class="project-top">
+                    <div class="project-icon">03</div>
+                    <div class="status">EXPERIMENT</div>
+                </div>
+
+                <h3>AI Experiments</h3>
+
+                <p>
+                    Exploring Artificial Intelligence,
+                    machine learning and emerging technologies.
+                </p>
+
+                <div class="tech">
+                    <span>AI</span>
+                    <span>Python</span>
+                </div>
+
+                <a href="#" class="button button-secondary">
+                    Coming soon
+                </a>
+            </article>
+
+            <article class="project-card">
+                <div class="project-top">
+                    <div class="project-icon">04</div>
+                    <div class="status">EXPERIMENT</div>
+                </div>
+
+                <h3>Creative Lab</h3>
+
+                <p>
+                    A space for ideas, experiments and
+                    creative digital solutions.
+                </p>
+
+                <div class="tech">
+                    <span>Design</span>
+                    <span>Technology</span>
+                </div>
+
+                <a href="#" class="button button-secondary">
+                    Coming soon
+                </a>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+    <div class="container reveal">
+
+        <div class="contact-box">
+
+            <div class="section-label" style="color:#E3E0F3;">
+                04 / GET IN TOUCH
+            </div>
+
+            <h2>Let's connect.</h2>
+
+            <p>
+                Have an interesting idea or want to get in touch?
+                I'd love to hear from you.
+            </p>
+
+            <a href="mailto:EMAIL_DO_LEO"
+               class="button">
+                Contact me →
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="container footer-content">
+
+        <div class="footer-logo">
+            LEO<span style="color:#009063;">.</span>DEV
+        </div>
+
+        <p>
+            © <span id="year"></span> Leo. All rights reserved.
+        </p>
+
+        <p>Designed with curiosity.</p>
+
+    </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+</script>
+
+</body>
+</html>
